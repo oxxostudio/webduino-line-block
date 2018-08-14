@@ -33,7 +33,3 @@
 ![](media/line_bot.jpg)
 
 
-## 授權
-
-本專案以 MIT 授權釋出，詳細資訊請閱讀 [LICENSE](LICENSE)。
-

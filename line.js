@@ -37,7 +37,7 @@
       }
     }
 
-    $.post('https://script.google.com/macros/s/AKfycbyJClsatp_iLXCzBfdhqaQGriloa0JS5BwMldbyO25M8KiNVUs/exec',
+    $.post('https://script.google.com/macros/s/AKfycbyhqPHD-fwl9Iou_FzYk3CpDHUbZMctiG_bcrgSR5WCKfz2OXi5/exec',
       data,
       function (e) {
         console.log(e);
@@ -65,7 +65,7 @@
         data.originalContentUrl = msg.imageUri;
       }
     }
-    $.post('https://script.google.com/macros/s/AKfycbwM1sSrweL1tv-UsyDnG-rUjMgXSzDLA1p5HAH64lXPOP8pcVE/exec',
+    $.post('https://script.google.com/macros/s/AKfycbxqsSMTWrJhnQI1GiNO2h2WwyTrWxr0eE4hwU9PrvTsFMOsffg/exec',
       data,
       function (e) {
         console.log(e);
