@@ -68,8 +68,8 @@ Blockly.JavaScript['line_chat'] = function (block) {
     'chatChannel.on("value", (e) => {\n' +
     '  let msg = e.val().msg;\n' + statements_do +
     '});\n';
-  //return code;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+  return code;
+  //return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['line_chat_msg'] = function(block) {
