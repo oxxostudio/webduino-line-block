@@ -15,7 +15,7 @@ Blockly.JavaScript['line_ifttt'] = function (block) {
     v3 = "''";
   }
 
-  var code = 'line_ifttt(' + event + ',' + key + ',' + v1 + ',' + v2 + ',' + v3 + ');';
+  var code = 'line_ifttt(' + event + ',' + key + ',' + v1 + ',' + v2 + ',' + v3 + ');\n';
 
   return code;
 };
@@ -29,7 +29,7 @@ Blockly.JavaScript['line_notify'] = function (block) {
     msg = "''";
   }
 
-  var code = 'line_notify(' + token + ',' + msg + ');';
+  var code = 'line_notify(' + token + ',' + msg + ');\n';
 
   return code;
 };
@@ -43,7 +43,7 @@ Blockly.JavaScript['line_bot'] = function (block) {
   if (msg.length == 0) {
     msg = "''";
   }
-  var code = 'line_bot(' + token + ',' + uid + ',' + msg + ');';
+  var code = 'line_bot(' + token + ',' + uid + ',' + msg + ');\n';
 
   return code;
 };
@@ -62,9 +62,12 @@ Blockly.JavaScript['line_image'] = function (block) {
 };
 
 Blockly.JavaScript['line_chat'] = function (block) {
-  var value_channel = Blockly.JavaScript.valueToCode(block, 'channel', Blockly.JavaScript.ORDER_ATOMIC);
+  var channel = Blockly.JavaScript.valueToCode(block, 'channel', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_do = Blockly.JavaScript.statementToCode(block, 'do');
-  var code = 'let chatChannel = new Firebase("https://botv1-bf689.firebaseio.com/"+' + value_channel + ');\n' +
+  if (channel.length == 0) {
+    channel  = "''";
+  }
+  var code = 'let chatChannel = new Firebase("https://botv1-bf689.firebaseio.com/"+' + channel + ');\n' +
     'chatChannel.on("value", (e) => {\n' +
     '  let msg = e.val().msg;\n' + statements_do +
     '});\n';
