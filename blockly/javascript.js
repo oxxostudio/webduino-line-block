@@ -64,10 +64,9 @@ Blockly.JavaScript['line_image'] = function (block) {
 Blockly.JavaScript['line_chat'] = function (block) {
   var value_channel = Blockly.JavaScript.valueToCode(block, 'channel', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_do = Blockly.JavaScript.statementToCode(block, 'do');
-  var code = 'let chatChannel = new Firebase("https://botv1-bf689.firebaseio.com/' + value_channel + '");\n' +
+  var code = 'let chatChannel = new Firebase("https://botv1-bf689.firebaseio.com/"+' + value_channel + ');\n' +
     'chatChannel.on("value", (e) => {\n' +
     '  let msg = e.val().msg;\n' + statements_do +
-    '  }\n' +
     '});\n';
   //return code;
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
