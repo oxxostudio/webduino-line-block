@@ -1,5 +1,5 @@
 {
-  "types": ["line_ifttt","line_notify","line_bot","line_sticker"],
+  "types": ["line_ifttt","line_notify","line_bot","line_sticker","line_chat"],
   "category": "catPlus",
   "scripts": [
     "blockly/blocks.js",

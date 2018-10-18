@@ -99,3 +99,34 @@ Blockly.Blocks['line_image'] = {
     this.setHelpUrl("http://www.oxxostudio.tw/articles/201804/line-bot-apps-script.html");
   }
 };
+
+Blockly.Blocks['line_chat'] = {
+  init: function () {
+    this.appendValueInput("channel")
+      .setCheck(null)
+      .appendField("從 LINE 頻道或 User ID");
+    this.appendDummyInput()
+      .appendField("接收訊息");
+    this.appendStatementInput("do")
+      .setCheck(null)
+      .appendField("執行");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+    this.setTooltip("LINE 頻道請用兩個半形冒號區隔，例如「test::開燈」，test 就是 LINE 頻道");
+    this.setHelpUrl("http://www.oxxostudio.tw/articles/201804/line-bot-apps-script.html");
+  }
+};
+
+Blockly.Blocks['line_talk_msg'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("接收的訊息");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(90);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
