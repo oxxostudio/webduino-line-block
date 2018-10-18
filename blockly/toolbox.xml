@@ -74,4 +74,12 @@
       </block>
     </value>
   </block>
+  <block type="line_chat">
+    <value name="channel">
+      <block type="text">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+  </block>
+  <block type="line_chat_msg"></block>
 </category>
