@@ -73,7 +73,7 @@ Blockly.JavaScript['line_chat'] = function (block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['line_talk_msg'] = function(block) {
+Blockly.JavaScript['line_chat_msg'] = function(block) {
   var code = 'msg';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };

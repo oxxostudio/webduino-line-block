@@ -119,7 +119,7 @@ Blockly.Blocks['line_chat'] = {
   }
 };
 
-Blockly.Blocks['line_talk_msg'] = {
+Blockly.Blocks['line_chat_msg'] = {
   init: function () {
     this.appendDummyInput()
       .appendField("接收的訊息");
