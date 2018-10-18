@@ -69,7 +69,7 @@ Blockly.JavaScript['line_chat'] = function (block) {
   }
   var code = 'let chatChannel = new Firebase("https://botv1-bf689.firebaseio.com/"+' + channel + ');\n' +
     'chatChannel.on("value", (e) => {\n' +
-    '  let msg = e.val().msg;\n' + statements_do +
+    '  let msg = e.val().msg || "";\n' + statements_do +
     '});\n';
   return code;
   //return [code, Blockly.JavaScript.ORDER_ATOMIC];
