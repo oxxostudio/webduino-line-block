@@ -65,12 +65,13 @@ Blockly.JavaScript['line_chat'] = function (block) {
   let database = block.getFieldValue('database');
   let channel = Blockly.JavaScript.valueToCode(block, 'channel', Blockly.JavaScript.ORDER_ATOMIC);
   let statements_do = Blockly.JavaScript.statementToCode(block, 'do');
-  database = database.toLowerCase(); 
+  database = database.toLowerCase();
   if (channel.length == 0) {
     channel = "''";
   }
   let code = 'let chatChannel = new Firebase("https://webduino-' + database + '.firebaseio.com/"+' + channel + ');\n' +
     'let databaseName = "' + database + '";\n' +
+    'chatChannel.set({time:"",uid:"",token:"",msg:""});\n' +
     'chatChannel.on("value", (e) => {\n' +
     '  let msg = "";\n' +
     '  if(e.val()){\n' +
