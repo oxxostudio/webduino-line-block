@@ -68,7 +68,7 @@ Blockly.JavaScript['line_chat'] = function (block) {
   if (channel.length == 0) {
     channel = "''";
   }
-  let code = 'let chatChannel = new Firebase("https://webduino-"+' + database + '+".firebaseio.com/"+' + channel + ');\n' +
+  let code = 'let chatChannel = new Firebase("https://webduino-' + database + '.firebaseio.com/"+' + channel + ');\n' +
     'chatChannel.on("value", (e) => {\n' +
     '  let msg = "";\n' +
     '  if(e.val()){\n' +
