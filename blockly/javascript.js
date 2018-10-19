@@ -65,10 +65,12 @@ Blockly.JavaScript['line_chat'] = function (block) {
   let database = block.getFieldValue('database');
   let channel = Blockly.JavaScript.valueToCode(block, 'channel', Blockly.JavaScript.ORDER_ATOMIC);
   let statements_do = Blockly.JavaScript.statementToCode(block, 'do');
+  database = database.toLowerCase(); 
   if (channel.length == 0) {
     channel = "''";
   }
   let code = 'let chatChannel = new Firebase("https://webduino-' + database + '.firebaseio.com/"+' + channel + ');\n' +
+    'let databaseName = "' + database + '";\n' +
     'chatChannel.on("value", (e) => {\n' +
     '  let msg = "";\n' +
     '  if(e.val()){\n' +
@@ -83,12 +85,12 @@ Blockly.JavaScript['line_chat_msg'] = function (block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['line_chat_push'] = function(block) {
+Blockly.JavaScript['line_chat_push'] = function (block) {
   let msg = Blockly.JavaScript.valueToCode(block, 'msg', Blockly.JavaScript.ORDER_ATOMIC);
   if (msg.length == 0) {
     msg = "''";
   }
-  let code = 'line_bot(e.val().token , e.val().uid , ' + msg + ');\n';
+  let code = 'line_bot(databaseName , e.val().uid , ' + msg + ');\n';
 
   return code;
 };
