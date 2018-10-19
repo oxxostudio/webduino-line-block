@@ -25,7 +25,7 @@ Blockly.Blocks['line_ifttt'] = {
     this.setNextStatement(true, null);
     this.setColour(120);
     this.setTooltip("");
-    this.setHelpUrl("http://www.oxxostudio.tw/articles/201803/ifttt-line.html");
+    this.setHelpUrl("http://www.oxxostudio.tw/");
   }
 };
 
@@ -44,7 +44,7 @@ Blockly.Blocks['line_notify'] = {
     this.setNextStatement(true, null);
     this.setColour(120);
     this.setTooltip("");
-    this.setHelpUrl("http://www.oxxostudio.tw/articles/201804/line-bot-apps-script.html");
+    this.setHelpUrl("http://www.oxxostudio.tw/");
   }
 };
 
@@ -67,7 +67,7 @@ Blockly.Blocks['line_bot'] = {
     this.setNextStatement(true, null);
     this.setColour(120);
     this.setTooltip("");
-    this.setHelpUrl("http://www.oxxostudio.tw/articles/201804/line-bot-apps-script.html");
+    this.setHelpUrl("http://www.oxxostudio.tw/");
   }
 };
 
@@ -96,7 +96,7 @@ Blockly.Blocks['line_image'] = {
     this.setOutput(true, null);
     this.setColour(90);
     this.setTooltip("");
-    this.setHelpUrl("http://www.oxxostudio.tw/articles/201804/line-bot-apps-script.html");
+    this.setHelpUrl("http://www.oxxostudio.tw/");
   }
 };
 
@@ -104,7 +104,9 @@ Blockly.Blocks['line_chat'] = {
   init: function () {
     this.appendValueInput("channel")
       .setCheck(null)
-      .appendField("從 LINE 頻道或 User ID");
+      .appendField("LINE (")
+      .appendField(new Blockly.FieldTextInput("thor"), "database")
+      .appendField(") 從頻道或 User ID");
     this.appendDummyInput()
       .appendField("接收訊息");
     this.appendStatementInput("do")
@@ -115,7 +117,7 @@ Blockly.Blocks['line_chat'] = {
     this.setNextStatement(true, null);
     this.setColour(120);
     this.setTooltip("LINE 頻道請用兩個半形冒號區隔，例如「test::開燈」，test 就是 LINE 頻道");
-    this.setHelpUrl("http://www.oxxostudio.tw/articles/201804/line-bot-apps-script.html");
+    this.setHelpUrl("http://www.oxxostudio.tw/");
   }
 };
 
@@ -127,6 +129,19 @@ Blockly.Blocks['line_chat_msg'] = {
     this.setOutput(true, null);
     this.setColour(90);
     this.setTooltip("");
-    this.setHelpUrl("");
+    this.setHelpUrl("http://www.oxxostudio.tw/");
+  }
+};
+
+Blockly.Blocks['line_chat_push'] = {
+  init: function () {
+    this.appendValueInput("msg")
+      .setCheck(null)
+      .appendField("回傳訊息");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(90);
+    this.setTooltip("");
+    this.setHelpUrl("http://www.oxxostudio.tw/");
   }
 };

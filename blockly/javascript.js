@@ -1,9 +1,9 @@
 Blockly.JavaScript['line_ifttt'] = function (block) {
-  var event = Blockly.JavaScript.valueToCode(block, 'line_ifttt_event', Blockly.JavaScript.ORDER_ATOMIC);
-  var key = Blockly.JavaScript.valueToCode(block, 'line_ifttt_key', Blockly.JavaScript.ORDER_ATOMIC);
-  var v1 = Blockly.JavaScript.valueToCode(block, 'line_ifttt_value1', Blockly.JavaScript.ORDER_ATOMIC);
-  var v2 = Blockly.JavaScript.valueToCode(block, 'line_ifttt_value2', Blockly.JavaScript.ORDER_ATOMIC);
-  var v3 = Blockly.JavaScript.valueToCode(block, 'line_ifttt_value3', Blockly.JavaScript.ORDER_ATOMIC);
+  let event = Blockly.JavaScript.valueToCode(block, 'line_ifttt_event', Blockly.JavaScript.ORDER_ATOMIC);
+  let key = Blockly.JavaScript.valueToCode(block, 'line_ifttt_key', Blockly.JavaScript.ORDER_ATOMIC);
+  let v1 = Blockly.JavaScript.valueToCode(block, 'line_ifttt_value1', Blockly.JavaScript.ORDER_ATOMIC);
+  let v2 = Blockly.JavaScript.valueToCode(block, 'line_ifttt_value2', Blockly.JavaScript.ORDER_ATOMIC);
+  let v3 = Blockly.JavaScript.valueToCode(block, 'line_ifttt_value3', Blockly.JavaScript.ORDER_ATOMIC);
 
   if (v1.length == 0) {
     v1 = "''";
@@ -15,15 +15,15 @@ Blockly.JavaScript['line_ifttt'] = function (block) {
     v3 = "''";
   }
 
-  var code = 'line_ifttt(' + event + ',' + key + ',' + v1 + ',' + v2 + ',' + v3 + ');\n';
+  let code = 'line_ifttt(' + event + ',' + key + ',' + v1 + ',' + v2 + ',' + v3 + ');\n';
 
   return code;
 };
 
 
 Blockly.JavaScript['line_notify'] = function (block) {
-  var token = Blockly.JavaScript.valueToCode(block, 'line_notify_token', Blockly.JavaScript.ORDER_ATOMIC);
-  var msg = Blockly.JavaScript.valueToCode(block, 'line_notify_msg', Blockly.JavaScript.ORDER_ATOMIC);
+  let token = Blockly.JavaScript.valueToCode(block, 'line_notify_token', Blockly.JavaScript.ORDER_ATOMIC);
+  let msg = Blockly.JavaScript.valueToCode(block, 'line_notify_msg', Blockly.JavaScript.ORDER_ATOMIC);
 
   if (msg.length == 0) {
     msg = "''";
@@ -36,49 +36,59 @@ Blockly.JavaScript['line_notify'] = function (block) {
 
 
 Blockly.JavaScript['line_bot'] = function (block) {
-  var token = Blockly.JavaScript.valueToCode(block, 'line_bot_token', Blockly.JavaScript.ORDER_ATOMIC);
-  var uid = Blockly.JavaScript.valueToCode(block, 'line_bot_uid', Blockly.JavaScript.ORDER_ATOMIC);
-  var msg = Blockly.JavaScript.valueToCode(block, 'line_bot_msg', Blockly.JavaScript.ORDER_ATOMIC);
+  let token = Blockly.JavaScript.valueToCode(block, 'line_bot_token', Blockly.JavaScript.ORDER_ATOMIC);
+  let uid = Blockly.JavaScript.valueToCode(block, 'line_bot_uid', Blockly.JavaScript.ORDER_ATOMIC);
+  let msg = Blockly.JavaScript.valueToCode(block, 'line_bot_msg', Blockly.JavaScript.ORDER_ATOMIC);
 
   if (msg.length == 0) {
     msg = "''";
   }
-  var code = 'line_bot(' + token + ',' + uid + ',' + msg + ');\n';
+  let code = 'line_bot(' + token + ',' + uid + ',' + msg + ');\n';
 
   return code;
 };
 
 Blockly.JavaScript['line_sticker'] = function (block) {
-  var package = Blockly.JavaScript.valueToCode(block, 'package', Blockly.JavaScript.ORDER_ATOMIC);
-  var sticker = Blockly.JavaScript.valueToCode(block, 'sticker', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{message:" ",stickerPackageId:"' + package + '",stickerId:"' + sticker + '",type:"sticker"}';
+  let package = Blockly.JavaScript.valueToCode(block, 'package', Blockly.JavaScript.ORDER_ATOMIC);
+  let sticker = Blockly.JavaScript.valueToCode(block, 'sticker', Blockly.JavaScript.ORDER_ATOMIC);
+  let code = '{message:" ",stickerPackageId:"' + package + '",stickerId:"' + sticker + '",type:"sticker"}';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['line_image'] = function (block) {
-  var value_img_url = Blockly.JavaScript.valueToCode(block, 'img_url', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '{message:" ",imageUri:' + value_img_url + ',type:"image"}';
+  let value_img_url = Blockly.JavaScript.valueToCode(block, 'img_url', Blockly.JavaScript.ORDER_ATOMIC);
+  let code = '{message:" ",imageUri:' + value_img_url + ',type:"image"}';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['line_chat'] = function (block) {
-  var channel = Blockly.JavaScript.valueToCode(block, 'channel', Blockly.JavaScript.ORDER_ATOMIC);
-  var statements_do = Blockly.JavaScript.statementToCode(block, 'do');
+  let database = block.getFieldValue('database');
+  let channel = Blockly.JavaScript.valueToCode(block, 'channel', Blockly.JavaScript.ORDER_ATOMIC);
+  let statements_do = Blockly.JavaScript.statementToCode(block, 'do');
   if (channel.length == 0) {
-    channel  = "''";
+    channel = "''";
   }
-  var code = 'let chatChannel = new Firebase("https://botv1-bf689.firebaseio.com/"+' + channel + ');\n' +
+  let code = 'let chatChannel = new Firebase("https://webduino-"+' + database + '+".firebaseio.com/"+' + channel + ');\n' +
     'chatChannel.on("value", (e) => {\n' +
-    '  let msg = "";\n'+
-    '  if(e.val()){\n'+
-    '    msg = e.val().msg;\n'+
-    '  }\n'+ statements_do +
+    '  let msg = "";\n' +
+    '  if(e.val()){\n' +
+    '    msg = e.val().msg;\n' +
+    '  }\n' + statements_do +
     '});\n';
   return code;
-  //return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['line_chat_msg'] = function(block) {
-  var code = 'msg';
+Blockly.JavaScript['line_chat_msg'] = function (block) {
+  let code = 'msg';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['line_chat_push'] = function(block) {
+  let msg = Blockly.JavaScript.valueToCode(block, 'msg', Blockly.JavaScript.ORDER_ATOMIC);
+  if (msg.length == 0) {
+    msg = "''";
+  }
+  let code = 'line_bot(e.val().token , e.val().uid , ' + msg + ');\n';
+
+  return code;
 };

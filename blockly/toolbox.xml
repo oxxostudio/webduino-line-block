@@ -82,4 +82,11 @@
     </value>
   </block>
   <block type="line_chat_msg"></block>
+  <block type="line_chat_push">
+    <value name="msg">
+      <block type="text">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+  </block>
 </category>
