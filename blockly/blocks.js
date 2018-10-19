@@ -115,7 +115,7 @@ Blockly.Blocks['line_chat'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(120);
+    this.setColour(0);
     this.setTooltip("LINE 頻道請用兩個半形冒號區隔，例如「test::開燈」，test 就是 LINE 頻道");
     this.setHelpUrl("http://www.oxxostudio.tw/");
   }
@@ -127,7 +127,7 @@ Blockly.Blocks['line_chat_msg'] = {
       .appendField("接收的訊息");
     this.setInputsInline(true);
     this.setOutput(true, null);
-    this.setColour(90);
+    this.setColour(30);
     this.setTooltip("");
     this.setHelpUrl("http://www.oxxostudio.tw/");
   }
@@ -140,7 +140,7 @@ Blockly.Blocks['line_chat_push'] = {
       .appendField("回傳訊息");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(90);
+    this.setColour(30);
     this.setTooltip("");
     this.setHelpUrl("http://www.oxxostudio.tw/");
   }
