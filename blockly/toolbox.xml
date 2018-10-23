@@ -82,7 +82,7 @@
     </value>
   </block>
   <block type="line_chat_msg"></block>
-  <block type="line_chat_push">
+  <block type="line_chat_reply">
     <value name="msg">
       <block type="text">
         <field name="TEXT"></field>

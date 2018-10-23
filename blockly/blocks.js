@@ -133,7 +133,7 @@ Blockly.Blocks['line_chat_msg'] = {
   }
 };
 
-Blockly.Blocks['line_chat_push'] = {
+Blockly.Blocks['line_chat_reply'] = {
   init: function () {
     this.appendValueInput("msg")
       .setCheck(null)

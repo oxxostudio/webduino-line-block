@@ -72,6 +72,35 @@
       });
   }
 
+  function line_reply(uid, msg, token) {
+    var data = {
+      token: token,
+      uid: uid
+    };
+    if (typeof msg != 'object') {
+      data.type = 'text';
+      data.text = msg;
+    } else {
+      if (msg.type == 'sticker') {
+        data.type = 'sticker';
+        data.text = '';
+        data.packageId = msg.stickerPackageId;
+        data.stickerId = msg.stickerId;
+      } else if (msg.type == 'image') {
+        data.type = 'image';
+        data.text = '';
+        data.previewImageUrl = msg.imageUri;
+        data.originalContentUrl = msg.imageUri;
+      }
+    }
+    $.post('https://script.google.com/macros/s/AKfycbzJrllwOKRdMM_jBImDJ-qbtNp2nfcxNw7J6DqjfKcIz25ocbtQ/exec',
+      data,
+      function (e) {
+        console.log(e);
+      });
+  }
+
+  window.line_reply = line_reply;
   window.line_ifttt = line_ifttt;
   window.line_notify = line_notify;
   window.line_bot = line_bot;

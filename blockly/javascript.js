@@ -86,12 +86,12 @@ Blockly.JavaScript['line_chat_msg'] = function (block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['line_chat_push'] = function (block) {
+Blockly.JavaScript['line_chat_reply'] = function (block) {
   let msg = Blockly.JavaScript.valueToCode(block, 'msg', Blockly.JavaScript.ORDER_ATOMIC);
   if (msg.length == 0) {
     msg = "''";
   }
-  let code = 'line_bot(databaseName , e.val().uid , ' + msg + ');\n';
+  let code = 'line_reply(e.val().uid , ' + msg + ', e.val().rt);\n';
 
   return code;
 };
