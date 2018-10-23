@@ -64,7 +64,6 @@ Blockly.JavaScript['line_image'] = function (block) {
 Blockly.JavaScript['line_chat'] = function (block) {
   let channel = Blockly.JavaScript.valueToCode(block, 'channel', Blockly.JavaScript.ORDER_ATOMIC);
   let statements_do = Blockly.JavaScript.statementToCode(block, 'do');
-  database = database.toLowerCase();
   if (channel.length == 0) {
     channel = "''";
   }
