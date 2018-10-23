@@ -116,7 +116,7 @@ Blockly.Blocks['line_chat'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(0);
-    this.setTooltip("LINE 頻道請用兩個半形冒號區隔，例如「test::開燈」，test 就是 LINE 頻道");
+    this.setTooltip("在 LINE 聊天視窗輸入 id 取得指定聊天頻道，或輸入 newid 更換聊天頻道");
     this.setHelpUrl("http://www.oxxostudio.tw/");
   }
 };
