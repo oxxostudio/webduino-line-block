@@ -93,7 +93,7 @@
         data.originalContentUrl = msg.imageUri;
       }
     }
-    $.post('https://script.google.com/macros/s/AKfycbzJrllwOKRdMM_jBImDJ-qbtNp2nfcxNw7J6DqjfKcIz25ocbtQ/exec',
+    $.post('https://script.google.com/macros/s/AKfycbwttseIo-jPekV0QnF4Ae1rLJOEl8jF_jQaLMlJpcIpo38vk752/exec',
       data,
       function (e) {
         console.log(e);
