@@ -67,19 +67,19 @@ Blockly.JavaScript['line_chat'] = function (block) {
   if (channel.length == 0) {
     channel = "''";
   }
-  let code = 'let chatChannel = new Firebase("https://webduino-robot101.firebaseio.com/message/"+' + channel + ');\n' +
-    'chatChannel.set({time:"",uid:"",msg:""});\n' +
-    'chatChannel.on("value", (e) => {\n' +
-    '  let msg = "";\n' +
-    '  if(e.val()){\n' +
-    '    msg = e.val().msg;\n' +
+  let code = 'let _chatChannel = new Firebase("https://webduino-robot101.firebaseio.com/message/"+' + channel + ');\n' +
+    '_chatChannel.set({time:"",uid:"",msg:""});\n' +
+    '_chatChannel.on("value", (_e) => {\n' +
+    '  let _msg = "";\n' +
+    '  if(_e.val()){\n' +
+    '    _msg = _e.val().msg;\n' +
     '  }\n' + statements_do +
     '});\n';
   return code;
 };
 
 Blockly.JavaScript['line_chat_msg'] = function (block) {
-  let code = 'msg';
+  let code = '_msg';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
@@ -88,7 +88,7 @@ Blockly.JavaScript['line_chat_reply'] = function (block) {
   if (msg.length == 0) {
     msg = "''";
   }
-  let code = 'line_reply(e.val().uid , ' + msg + ', e.val().rt);\n';
+  let code = 'line_reply(_e.val().uid , ' + msg + ', _e.val().rt);\n';
 
   return code;
 };
