@@ -100,6 +100,12 @@
       });
   }
 
+  function line_channel(name) {
+    let channel = new Firebase('https://webduino-robot101.firebaseio.com/message/' + name);
+    return channel;
+  }
+
+  window.line_channel = line_channel;
   window.line_reply = line_reply;
   window.line_ifttt = line_ifttt;
   window.line_notify = line_notify;
