@@ -102,6 +102,7 @@
 
   function line_channel(name) {
     let channel = new Firebase('https://webduino-robot101.firebaseio.com/message/' + name);
+    channel.set({time:'',uid:'',msg:''});
     return channel;
   }
 
