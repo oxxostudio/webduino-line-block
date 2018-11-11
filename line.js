@@ -24,7 +24,13 @@
       token: token
     };
     if (typeof msg != 'object') {
-      data.message = msg;
+      if(msg.indexOf('.jpg')!=-1||msg.indexOf('.png')!=-1||msg.indexOf('.gif')!=-1||msg.indexOf('.jpeg')!=-1){
+        data.message = '';
+        data.imageThumbnail = msg;
+        data.imageFullsize = msg;
+      }else{
+        data.message = msg;
+      }
     } else {
       if (msg.type == 'sticker') {
         data.message = msg.message;
@@ -53,8 +59,8 @@
       if(msg.indexOf('.jpg')!=-1||msg.indexOf('.png')!=-1||msg.indexOf('.gif')!=-1||msg.indexOf('.jpeg')!=-1){
         data.type = 'image';
         data.text = '';
-        data.previewImageUrl = msg.imageUri;
-        data.originalContentUrl = msg.imageUri;
+        data.previewImageUrl = msg;
+        data.originalContentUrl = msg;
       }else{
         data.type = 'text';
         data.text = msg;
@@ -85,13 +91,11 @@
       uid: uid
     };
     if (typeof msg != 'object') {
-      data.type = 'text';
-      data.text = msg;
       if(msg.indexOf('.jpg')!=-1||msg.indexOf('.png')!=-1||msg.indexOf('.gif')!=-1||msg.indexOf('.jpeg')!=-1){
         data.type = 'image';
         data.text = '';
-        data.previewImageUrl = msg.imageUri;
-        data.originalContentUrl = msg.imageUri;
+        data.previewImageUrl = msg;
+        data.originalContentUrl = msg;
       }else{
         data.type = 'text';
         data.text = msg;
