@@ -50,8 +50,15 @@
       uid: uid
     };
     if (typeof msg != 'object') {
-      data.type = 'text';
-      data.text = msg;
+      if(msg.indexOf('.jpg')!=-1||msg.indexOf('.png')!=-1||msg.indexOf('.gif')!=-1||msg.indexOf('.jpeg')!=-1){
+        data.type = 'image';
+        data.text = '';
+        data.previewImageUrl = msg.imageUri;
+        data.originalContentUrl = msg.imageUri;
+      }else{
+        data.type = 'text';
+        data.text = msg;
+      }
     } else {
       if (msg.type == 'sticker') {
         data.type = 'sticker';
@@ -80,6 +87,15 @@
     if (typeof msg != 'object') {
       data.type = 'text';
       data.text = msg;
+      if(msg.indexOf('.jpg')!=-1||msg.indexOf('.png')!=-1||msg.indexOf('.gif')!=-1||msg.indexOf('.jpeg')!=-1){
+        data.type = 'image';
+        data.text = '';
+        data.previewImageUrl = msg.imageUri;
+        data.originalContentUrl = msg.imageUri;
+      }else{
+        data.type = 'text';
+        data.text = msg;
+      }
     } else {
       if (msg.type == 'sticker') {
         data.type = 'sticker';
