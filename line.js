@@ -25,7 +25,7 @@
     };
     if (typeof msg != 'object') {
       if(msg.indexOf('.jpg')!=-1||msg.indexOf('.png')!=-1||msg.indexOf('.gif')!=-1||msg.indexOf('.jpeg')!=-1){
-        data.message = '';
+        data.message = ' ';
         data.imageThumbnail = msg;
         data.imageFullsize = msg;
       }else{
@@ -58,7 +58,7 @@
     if (typeof msg != 'object') {
       if(msg.indexOf('.jpg')!=-1||msg.indexOf('.png')!=-1||msg.indexOf('.gif')!=-1||msg.indexOf('.jpeg')!=-1){
         data.type = 'image';
-        data.text = '';
+        data.text = ' ';
         data.previewImageUrl = msg;
         data.originalContentUrl = msg;
       }else{
