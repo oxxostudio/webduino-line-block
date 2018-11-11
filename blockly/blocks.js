@@ -114,8 +114,8 @@ Blockly.Blocks['line_chat'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(0);
-    this.setTooltip("在 LINE 聊天視窗輸入 id 取得指定聊天頻道，或輸入 newid 更換聊天頻道");
-    this.setHelpUrl("http://www.oxxostudio.tw/");
+    this.setTooltip("按右鍵選擇教學，加入 Webduino 聊天機器人為好友，就可以開始控制");
+    this.setHelpUrl("https://line.me/R/ti/p/%40ffm9294c");
   }
 };
 
@@ -127,7 +127,7 @@ Blockly.Blocks['line_chat_msg'] = {
     this.setOutput(true, null);
     this.setColour(30);
     this.setTooltip("");
-    this.setHelpUrl("http://www.oxxostudio.tw/");
+    this.setHelpUrl("https://line.me/R/ti/p/%40ffm9294c");
   }
 };
 
@@ -140,6 +140,6 @@ Blockly.Blocks['line_chat_reply'] = {
     this.setNextStatement(true, null);
     this.setColour(30);
     this.setTooltip("");
-    this.setHelpUrl("http://www.oxxostudio.tw/");
+    this.setHelpUrl("https://line.me/R/ti/p/%40ffm9294c");
   }
 };
