@@ -104,7 +104,7 @@ Blockly.Blocks['line_chat'] = {
   init: function () {
     this.appendValueInput("channel")
       .setCheck(null)
-      .appendField("LINE ( Chat ) 從頻道 ID");
+      .appendField("LINE ( Chat ) 從頻道名稱");
     this.appendDummyInput()
       .appendField("接收訊息");
     this.appendStatementInput("do")
