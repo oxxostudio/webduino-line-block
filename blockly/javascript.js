@@ -15,7 +15,8 @@ Blockly.JavaScript['line_ifttt'] = function (block) {
     v3 = "''";
   }
 
-  let code = 'line_ifttt(' + event + ',' + key + ',' + v1 + ',' + v2 + ',' + v3 + ');\n';
+  let code = 'line_ifttt(' + event + ',' + key + ',' + v1 + ',' + v2 + ',' + v3 + ');\n'+
+  'await delay(1);\n';
 
   return code;
 };
@@ -29,7 +30,8 @@ Blockly.JavaScript['line_notify'] = function (block) {
     msg = "''";
   }
 
-  var code = 'line_notify(' + token + ',' + msg + ');\n';
+  var code = 'line_notify(' + token + ',' + msg + ');\n'+
+  'await delay(1);\n';
 
   return code;
 };
@@ -43,7 +45,8 @@ Blockly.JavaScript['line_bot'] = function (block) {
   if (msg.length == 0) {
     msg = "''";
   }
-  let code = 'line_bot(' + token + ',' + uid + ',' + msg + ');\n';
+  let code = 'line_bot(' + token + ',' + uid + ',' + msg + ');\n'+
+  'await delay(1);\n';
 
   return code;
 };
