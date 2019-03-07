@@ -72,10 +72,11 @@ Blockly.JavaScript['line_chat'] = function (block) {
   let code = 'let _chatChannel = line_channel(' + channel + ');\n' +
     '_chatChannel.on("value", async function(_e){\n' +
     '  let _msg = "";\n' +
-    '  if(_msg){\n' +
-    '    if(_e.val()){\n' +
-    '      _msg = _e.val().msg;\n' +
-    '    }\n' + statements_do +
+    '  if(_e.val()){\n' +
+    '    _msg = _e.val().msg;\n' +
+    '  }\n' +
+    '  if(_msg){\n' + 
+    statements_do +
     '  }\n' +
     '});\n';
   return code;
