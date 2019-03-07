@@ -24,12 +24,13 @@
       token: token
     };
     if (typeof msg != 'object') {
+      msg = msg + '';
       if(msg.indexOf('.jpg')!=-1||msg.indexOf('.png')!=-1||msg.indexOf('.gif')!=-1||msg.indexOf('.jpeg')!=-1){
         data.message = ' ';
         data.imageThumbnail = msg;
         data.imageFullsize = msg;
       }else{
-        data.message = msg+'';
+        data.message = msg;
       }
     } else {
       if (msg.type == 'sticker') {
