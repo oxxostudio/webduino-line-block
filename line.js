@@ -93,45 +93,48 @@
   }
 
   function line_reply(uid, msg, token) {
-    var data = {
-      token: token,
-      uid: uid
-    };
-    if (typeof msg != 'object') {
-      msg = msg + '';
-      if (msg.indexOf('.jpg') != -1 || msg.indexOf('.png') != -1 || msg.indexOf('.gif') != -1 || msg.indexOf('.jpeg') != -1) {
-        data.type = 'image';
-        data.text = '';
-        data.previewImageUrl = msg;
-        data.originalContentUrl = msg;
+    console.log(token);
+    if (token) {
+      var data = {
+        token: token,
+        uid: uid
+      };
+      if (typeof msg != 'object') {
+        msg = msg + '';
+        if (msg.indexOf('.jpg') != -1 || msg.indexOf('.png') != -1 || msg.indexOf('.gif') != -1 || msg.indexOf('.jpeg') != -1) {
+          data.type = 'image';
+          data.text = '';
+          data.previewImageUrl = msg;
+          data.originalContentUrl = msg;
+        } else {
+          data.type = 'text';
+          data.text = msg;
+        }
       } else {
-        data.type = 'text';
-        data.text = msg;
+        if (msg.type == 'sticker') {
+          data.type = 'sticker';
+          data.text = '';
+          data.packageId = msg.stickerPackageId + '';
+          data.stickerId = msg.stickerId + '';
+        } else if (msg.type == 'image') {
+          data.type = 'image';
+          data.text = '';
+          data.previewImageUrl = msg.imageUri;
+          data.originalContentUrl = msg.imageUri;
+        }
       }
-    } else {
-      if (msg.type == 'sticker') {
-        data.type = 'sticker';
-        data.text = '';
-        data.packageId = msg.stickerPackageId + '';
-        data.stickerId = msg.stickerId + '';
-      } else if (msg.type == 'image') {
-        data.type = 'image';
-        data.text = '';
-        data.previewImageUrl = msg.imageUri;
-        data.originalContentUrl = msg.imageUri;
-      }
+      return fetch('https://script.google.com/macros/s/AKfycbyP576FXSattUxVv_nQH9QFqNDUf0V4zeVsMeB9VqrpySI10yE/exec', {
+        method: 'post',
+        body: encodeURI(JSON.stringify(data)), // fetch 的中文會變亂碼，要用 encodeURI 轉換
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+        }
+      }).then(res => {
+        return res.text();
+      }).then(reply => {
+        console.log(reply);
+      });
     }
-    return fetch('https://script.google.com/macros/s/AKfycbyP576FXSattUxVv_nQH9QFqNDUf0V4zeVsMeB9VqrpySI10yE/exec', {
-      method: 'post',
-      body: encodeURI(JSON.stringify(data)), // fetch 的中文會變亂碼，要用 encodeURI 轉換
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
-      }
-    }).then(res => {
-      return res.text();
-    }).then(reply => {
-      console.log(reply);
-    });
   }
 
   function line_channel(name) {
