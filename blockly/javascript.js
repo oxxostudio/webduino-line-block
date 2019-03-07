@@ -15,8 +15,8 @@ Blockly.JavaScript['line_ifttt'] = function (block) {
     v3 = "''";
   }
 
-  let code = 'line_ifttt(' + event + ',' + key + ',' + v1 + ',' + v2 + ',' + v3 + ');\n'+
-  'await delay(1);\n';
+  let code = 'line_ifttt(' + event + ',' + key + ',' + v1 + ',' + v2 + ',' + v3 + ');\n' +
+    'await delay(1);\n';
 
   return code;
 };
@@ -44,8 +44,8 @@ Blockly.JavaScript['line_bot'] = function (block) {
   if (msg.length == 0) {
     msg = "''";
   }
-  let code = 'line_bot(' + token + ',' + uid + ',' + msg + ');\n'+
-  'await delay(1);\n';
+  let code = 'line_bot(' + token + ',' + uid + ',' + msg + ');\n' +
+    'await delay(1);\n';
 
   return code;
 };
@@ -72,9 +72,11 @@ Blockly.JavaScript['line_chat'] = function (block) {
   let code = 'let _chatChannel = line_channel(' + channel + ');\n' +
     '_chatChannel.on("value", async function(_e){\n' +
     '  let _msg = "";\n' +
-    '  if(_e.val()){\n' +
-    '    _msg = _e.val().msg;\n' +
-    '  }\n' + statements_do +
+    '  if(_msg){\n' +
+    '    if(_e.val()){\n' +
+    '      _msg = _e.val().msg;\n' +
+    '    }\n' + statements_do +
+    '  }\n' +
     '});\n';
   return code;
 };
