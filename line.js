@@ -29,13 +29,13 @@
         data.imageThumbnail = msg;
         data.imageFullsize = msg;
       }else{
-        data.message = msg;
+        data.message = msg+'';
       }
     } else {
       if (msg.type == 'sticker') {
         data.message = msg.message;
-        data.stickerPackageId = msg.stickerPackageId;
-        data.stickerId = msg.stickerId;
+        data.stickerPackageId = msg.stickerPackageId+'';
+        data.stickerId = msg.stickerId+'';
       } else if (msg.type == 'image') {
         data.message = msg.message;
         data.imageThumbnail = msg.imageUri;

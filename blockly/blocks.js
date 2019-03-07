@@ -44,6 +44,7 @@ Blockly.Blocks['line_notify'] = {
     this.setNextStatement(true, null);
     this.setColour(120);
     this.setTooltip("");
+    this.setCommentText("發送 LINE Notify 之後，才會繼續執行下方程式");
     this.setHelpUrl("http://www.oxxostudio.tw/");
   }
 };
@@ -114,7 +115,8 @@ Blockly.Blocks['line_chat'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(0);
-    this.setTooltip("按右鍵選擇教學，加入 Webduino 聊天機器人為好友，就可以開始控制");
+    this.setTooltip("");
+    this.setCommentText("按右鍵選擇「教學」，加入 Webduino 聊天機器人為好友，就可以開始控制");
     this.setHelpUrl("https://line.me/R/ti/p/%40ffm9294c");
   }
 };
