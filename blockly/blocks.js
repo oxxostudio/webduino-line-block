@@ -74,12 +74,12 @@ Blockly.Blocks['line_bot'] = {
 
 Blockly.Blocks['line_sticker'] = {
   init: function () {
-    this.appendValueInput("package")
-      .setCheck(null)
-      .appendField(Blockly.Msg.LINE_STKVER);
     this.appendValueInput("sticker")
       .setCheck(null)
       .appendField(Blockly.Msg.LINE_STKID);
+    this.appendValueInput("package")
+      .setCheck(null)
+      .appendField(Blockly.Msg.LINE_STKVER);
     this.setInputsInline(true);
     this.setOutput(true, null);
     this.setColour(90);
