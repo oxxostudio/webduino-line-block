@@ -89,7 +89,7 @@ Blockly.JavaScript['line_chat_reply'] = function (block) {
   if (msg.length == 0) {
     msg = "''";
   }
-  let code = 'line_reply(_e.val().uid , ' + msg + ', _e.val().rt);\n';
+  let code = 'await line_reply(_e.val().uid , ' + msg + ', _e.val().rt);\n';
 
   return code;
 };

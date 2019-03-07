@@ -25,18 +25,18 @@
     };
     if (typeof msg != 'object') {
       msg = msg + '';
-      if(msg.indexOf('.jpg')!=-1||msg.indexOf('.png')!=-1||msg.indexOf('.gif')!=-1||msg.indexOf('.jpeg')!=-1){
+      if (msg.indexOf('.jpg') != -1 || msg.indexOf('.png') != -1 || msg.indexOf('.gif') != -1 || msg.indexOf('.jpeg') != -1) {
         data.message = ' ';
         data.imageThumbnail = msg;
         data.imageFullsize = msg;
-      }else{
+      } else {
         data.message = msg;
       }
     } else {
       if (msg.type == 'sticker') {
         data.message = msg.message;
-        data.stickerPackageId = msg.stickerPackageId+'';
-        data.stickerId = msg.stickerId+'';
+        data.stickerPackageId = msg.stickerPackageId + '';
+        data.stickerId = msg.stickerId + '';
       } else if (msg.type == 'image') {
         data.message = msg.message;
         data.imageThumbnail = msg.imageUri;
@@ -62,12 +62,13 @@
       uid: uid
     };
     if (typeof msg != 'object') {
-      if(msg.indexOf('.jpg')!=-1||msg.indexOf('.png')!=-1||msg.indexOf('.gif')!=-1||msg.indexOf('.jpeg')!=-1){
+      msg = msg + '';
+      if (msg.indexOf('.jpg') != -1 || msg.indexOf('.png') != -1 || msg.indexOf('.gif') != -1 || msg.indexOf('.jpeg') != -1) {
         data.type = 'image';
         data.text = ' ';
         data.previewImageUrl = msg;
         data.originalContentUrl = msg;
-      }else{
+      } else {
         data.type = 'text';
         data.text = msg;
       }
@@ -75,8 +76,8 @@
       if (msg.type == 'sticker') {
         data.type = 'sticker';
         data.text = '';
-        data.packageId = msg.stickerPackageId;
-        data.stickerId = msg.stickerId;
+        data.packageId = msg.stickerPackageId + '';
+        data.stickerId = msg.stickerId + '';
       } else if (msg.type == 'image') {
         data.type = 'image';
         data.text = '';
@@ -97,12 +98,13 @@
       uid: uid
     };
     if (typeof msg != 'object') {
-      if(msg.indexOf('.jpg')!=-1||msg.indexOf('.png')!=-1||msg.indexOf('.gif')!=-1||msg.indexOf('.jpeg')!=-1){
+      msg = msg + '';
+      if (msg.indexOf('.jpg') != -1 || msg.indexOf('.png') != -1 || msg.indexOf('.gif') != -1 || msg.indexOf('.jpeg') != -1) {
         data.type = 'image';
         data.text = '';
         data.previewImageUrl = msg;
         data.originalContentUrl = msg;
-      }else{
+      } else {
         data.type = 'text';
         data.text = msg;
       }
@@ -110,8 +112,8 @@
       if (msg.type == 'sticker') {
         data.type = 'sticker';
         data.text = '';
-        data.packageId = msg.stickerPackageId;
-        data.stickerId = msg.stickerId;
+        data.packageId = msg.stickerPackageId + '';
+        data.stickerId = msg.stickerId + '';
       } else if (msg.type == 'image') {
         data.type = 'image';
         data.text = '';
@@ -119,16 +121,22 @@
         data.originalContentUrl = msg.imageUri;
       }
     }
-    $.post('https://script.google.com/macros/s/AKfycbyP576FXSattUxVv_nQH9QFqNDUf0V4zeVsMeB9VqrpySI10yE/exec',
-      data,
-      function (e) {
-        console.log(e);
-      });
+    return fetch('https://script.google.com/macros/s/AKfycbyP576FXSattUxVv_nQH9QFqNDUf0V4zeVsMeB9VqrpySI10yE/exec', {
+      method: 'post',
+      body: encodeURI(JSON.stringify(data)), // fetch 的中文會變亂碼，要用 encodeURI 轉換
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+      }
+    }).then(res => {
+      return res.text();
+    }).then(reply => {
+      console.log(reply);
+    });
   }
 
   function line_channel(name) {
     let channel = new Firebase('https://webduino-robot101.firebaseio.com/message/' + name);
-    channel.set({time:'',uid:'',msg:''});
+    channel.set({ time: '', uid: '', msg: '' });
     return channel;
   }
 
