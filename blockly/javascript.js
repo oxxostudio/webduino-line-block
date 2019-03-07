@@ -30,8 +30,7 @@ Blockly.JavaScript['line_notify'] = function (block) {
     msg = "''";
   }
 
-  var code = 'line_notify(' + token + ',' + msg + ');\n'+
-  'await delay(1);\n';
+  var code = 'await line_notify(' + token + ',' + msg + ');\n';
 
   return code;
 };

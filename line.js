@@ -20,7 +20,7 @@
   }
 
   function line_notify(token, msg) {
-    var data = {
+    let data = {
       token: token
     };
     if (typeof msg != 'object') {
@@ -42,12 +42,17 @@
         data.imageFullsize = msg.imageUri;
       }
     }
-
-    $.post('https://script.google.com/macros/s/AKfycbyhqPHD-fwl9Iou_FzYk3CpDHUbZMctiG_bcrgSR5WCKfz2OXi5/exec',
-      data,
-      function (e) {
-        console.log(e);
-      });
+    return fetch('https://script.google.com/macros/s/AKfycbyhqPHD-fwl9Iou_FzYk3CpDHUbZMctiG_bcrgSR5WCKfz2OXi5/exec', {
+      method: 'post',
+      body: encodeURI(JSON.stringify(data)), // fetch 的中文會變亂碼，要用 encodeURI 轉換
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+      }
+    }).then(res => {
+      return res.text();
+    }).then(reply => {
+      console.log(reply);
+    });
   }
 
   function line_bot(token, uid, msg) {
