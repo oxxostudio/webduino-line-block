@@ -116,7 +116,7 @@ Blockly.Blocks['line_chat'] = {
     this.setNextStatement(true, null);
     this.setColour(0);
     this.setTooltip("");
-    this.setCommentText("按右鍵選擇「教學」，加入 Webduino 聊天機器人為好友，就可以開始控制");
+    this.setCommentText("右鍵選擇「教學」，加入 Webduino 為 LINE 好友開始聊天控制");
     this.setHelpUrl("https://line.me/R/ti/p/%40ffm9294c");
   }
 };
