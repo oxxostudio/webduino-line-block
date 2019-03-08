@@ -1,4 +1,4 @@
-<category id="catLine">
+<category id="catLine"  COLOUR="120">
   <block type="line_ifttt">
     <value name="line_ifttt_event">
       <block type="text">
